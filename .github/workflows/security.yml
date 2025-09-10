@@ -22,10 +22,9 @@ jobs:
         run: |
           curl -L -o spotbugs.tgz https://github.com/spotbugs/spotbugs/releases/download/4.9.4/spotbugs-4.9.4.tgz
           tar -xzf spotbugs.tgz --strip-components=2 spotbugs-4.9.4/bin/spotbugs
-          awk 'NR==1{$0="#!/bin/bash"}1' spotbugs > tmp && mv tmp spotbugs
+          awk 'NR==1{$0="#!/usr/bin/sh"}1' spotbugs > tmp && mv tmp spotbugs
           rm -rf tmp
           chmod +x spotbugs
-          which sh
       - name: Run SpotBugs Analysis
         run: |
           ./spotbugs -textui -html -output spotbugs.html build/classes/java/main
