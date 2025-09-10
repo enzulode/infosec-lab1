@@ -19,7 +19,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
       - name: Download SpotBugs
-        uses: enzulode/setup-spotbugs-action@v1.0
+        uses: 'enzulode/setup-spotbugs-action@v1.0'
         run: |
           curl -L -o spotbugs.tgz https://github.com/spotbugs/spotbugs/releases/download/4.9.4/spotbugs-4.9.4.tgz
           tar -xzf spotbugs.tgz
