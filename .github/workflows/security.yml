@@ -22,6 +22,8 @@ jobs:
         run: |
           curl -L -o spotbugs.tgz https://github.com/spotbugs/spotbugs/releases/download/4.9.4/spotbugs-4.9.4.tgz
           tar -xzf spotbugs.tgz --strip-components=2 spotbugs-4.9.4/bin/spotbugs
+          chmod +x spotbugs
+          ls -la
           ./spotbugs -textui -html -output spotbugs.html build/classes/java/main
       - name: Upload SpotBugs report
         uses: actions/upload-artifact@v4
