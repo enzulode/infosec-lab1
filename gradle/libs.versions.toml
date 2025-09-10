@@ -1,0 +1,15 @@
+[versions]
+jvm = '21'
+springBootVersion = '3.5.5'
+dependencyManagementVersion = '1.1.7'
+
+[plugins]
+springBootPlugin = { id = 'org.springframework.boot', version.ref = 'springBootVersion' }
+dependencyManagementPlugin = { id = 'io.spring.dependency-management', version.ref = 'dependencyManagementVersion' }
+
+[libraries]
+starterWeb = { group = 'org.springframework.boot', name = 'spring-boot-starter-web' }
+starterDataJpa = { group = 'org.springframework.boot', name = 'spring-boot-starter-data-jpa' }
+starterSecurity = { group = 'org.springframework.boot', name = 'spring-boot-starter-security' }
+lombok = { group = 'org.projectlombok', name = 'lombok' }
+postgresqlDriver = { group = 'org.postgresql', name = 'postgresql' }

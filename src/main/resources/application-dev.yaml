@@ -1,0 +1,18 @@
+server:
+  port: ${ENV_APP_PORT:8080}
+
+spring:
+  application:
+    name: ${ENV_APP_NAME:infosec-lab1}
+    version: ${ENV_APP_VERSION:SNAPSHOT-dev}
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${ENV_PG_HOST}:${ENV_PG_PORT}/${ENV_PG_DBNAME}
+    username: ${ENV_PG_USERNAME}
+    password: ${ENV_PG_PASSWORD}

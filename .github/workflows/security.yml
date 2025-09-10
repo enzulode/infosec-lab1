@@ -1,0 +1,15 @@
+name: security
+on: [ push ]
+
+jobs:
+#  spotbugs-sast:
+#    runs-on: ubuntu-latest
+
+  snyk-sca:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Snyk Check
+        uses: snyk/actions/gradle-9-jdk21@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_API_KEY }}
