@@ -26,7 +26,7 @@ jobs:
         run: |
           ./spotbugs-4.9.4/bin/spotbugs -textui -html -output spotbugs.html build/classes/java/main
       - name: Upload SpotBugs report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: spotbugs-report
           path: spotbugs.html
