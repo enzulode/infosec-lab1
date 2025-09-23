@@ -1,0 +1,38 @@
+volumes:
+  pg_data_dev: {}
+
+services:
+  pg:
+    image: "bitnami/postgresql:${PG_VERSION}"
+    hostname: ${PG_HOST}
+    environment:
+      POSTGRESQL_USERNAME: ${PG_USERNAME}
+      POSTGRESQL_PASSWORD: ${PG_PASSWORD}
+    volumes:
+      - pg_data_dev:/bitnami/postgresql
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "$$PG_USERNAME" ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  backend:
+    depends_on:
+      pg:
+        condition: service_healthy
+    image: "infosec-lab1:${APP_VERSION}"
+    environment:
+      ENV_APP_NAME: ${APP_NAME}
+      ENV_APP_VERSION: ${APP_VERSION}
+      ENV_APP_PORT: ${APP_PORT}
+      ENV_PG_HOST: ${PG_HOST}
+      ENV_PG_PORT: ${PG_PORT}
+      ENV_PG_DBNAME: ${PG_DBNAME}
+      ENV_PG_USERNAME: ${PG_USERNAME}
+      ENV_PG_PASSWORD: ${PG_PASSWORD}
+      SPRING_PROFILES_ACTIVE: ${APP_PROFILE}
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
