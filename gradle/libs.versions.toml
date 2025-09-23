@@ -16,3 +16,5 @@ starterDataJpa = { group = 'org.springframework.boot', name = 'spring-boot-start
 starterSecurity = { group = 'org.springframework.boot', name = 'spring-boot-starter-security' }
 lombok = { group = 'org.projectlombok', name = 'lombok' }
 postgresqlDriver = { group = 'org.postgresql', name = 'postgresql' }
+flywayMigrations = { group = 'org.flywaydb', name = 'flyway-core' }
+flywayDbPostgres = { group = 'org.flywaydb', name = 'flyway-database-postgresql' }
