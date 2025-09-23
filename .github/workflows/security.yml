@@ -28,6 +28,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: spotbugs-sast
     continue-on-error: true
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
     steps:
       - uses: actions/checkout@master
       - name: Snyk Check
