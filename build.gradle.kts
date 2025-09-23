@@ -44,7 +44,7 @@ tasks.named<BootBuildImage>("bootBuildImage") {
 
 tasks.withType<SpotBugsTask>() {
     reports {
-        create("html") {
+        create("sarif") {
             enabled = true
         }
     }
