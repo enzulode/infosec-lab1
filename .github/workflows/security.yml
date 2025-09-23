@@ -4,6 +4,10 @@ on: [ push, pull_request ]
 jobs:
   spotbugs-sast:
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
     steps:
       - uses: actions/checkout@v5
       - name: Set up JDK 21
