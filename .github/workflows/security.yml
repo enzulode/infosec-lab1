@@ -1,5 +1,5 @@
 name: security
-on: [ push ]
+on: [ push, pull_request ]
 
 jobs:
   spotbugs-sast:
