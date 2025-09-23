@@ -1,3 +1,4 @@
+import com.github.spotbugs.snom.SpotBugsTask
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
@@ -40,3 +41,12 @@ tasks.named<BootBuildImage>("bootBuildImage") {
         "BPE_APPEND_JAVA_TOOL_OPTIONS" to "-Dspring.profiles.default=prod",
     )
 }
+
+tasks.withType<SpotBugsTask>() {
+    reports {
+        create("html") {
+            enabled = true
+        }
+    }
+}
+spotbugs.toolVersion = libs.versions.spotbugsToolVersion.get()

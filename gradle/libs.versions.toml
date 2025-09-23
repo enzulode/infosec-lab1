@@ -3,6 +3,7 @@ jvm = '21'
 springBootVersion = '3.5.5'
 dependencyManagementVersion = '1.1.7'
 spotbugsPluginVersion = '6.4.2'
+spotbugsToolVersion = '4.9.6'
 
 [plugins]
 springBootPlugin = { id = 'org.springframework.boot', version.ref = 'springBootVersion' }
