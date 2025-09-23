@@ -23,6 +23,8 @@ dependencies {
     implementation(libs.starterWeb)
     implementation(libs.starterDataJpa)
     runtimeOnly(libs.postgresqlDriver)
+    implementation(libs.flywayMigrations)
+    implementation(libs.flywayDbPostgres)
     implementation(libs.starterSecurity)
 
     compileOnly(libs.lombok)

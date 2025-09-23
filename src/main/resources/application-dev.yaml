@@ -11,6 +11,9 @@ spring:
       ddl-auto: create-drop
     open-in-view: false
 
+  flyway:
+    locations: classpath:db/migration/{vendor}
+
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${ENV_PG_HOST}:${ENV_PG_PORT}/${ENV_PG_DBNAME}
