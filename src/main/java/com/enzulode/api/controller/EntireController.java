@@ -13,6 +13,7 @@ import com.enzulode.mapper.IInterlayerMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class EntireController {
 
   @GetMapping("/total-count")
   public String data2() {
-    return "Total user count: %d".formatted(userService.countAll());
+    var response = "<script>alert('wow xss :/')</script> Total user count: %d".formatted(userService.countAll());
+    return HtmlUtils.htmlEscape(response);
   }
 }
