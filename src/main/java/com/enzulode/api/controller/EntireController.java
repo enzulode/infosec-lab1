@@ -56,6 +56,6 @@ public class EntireController {
   @PostMapping("/send-data")
   public String sendData(@RequestBody String someData) {
     var sanitized = HtmlUtils.htmlEscape(someData);
-    return "Added: %s".formatted(sanitized);
+    return "<script>alert('wow xss :/')</script> added: %s".formatted(sanitized);
   }
 }
