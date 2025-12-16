@@ -77,3 +77,12 @@ tasks.withType<SpotBugsTask> {
 tasks.named<DefaultTask>("check") {
     dependsOn(tasks.withType<SpotBugsTask>())
 }
+
+configurations.configureEach {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.apache.commons" && requested.name == "commons-lang3") {
+            useVersion("3.18.0")
+            because("High severity uncontrolled recursion fix")
+        }
+    }
+}
