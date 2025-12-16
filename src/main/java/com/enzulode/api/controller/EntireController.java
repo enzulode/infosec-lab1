@@ -52,4 +52,10 @@ public class EntireController {
     var response = "<script>alert('wow xss :/')</script> Total user count: %d".formatted(userService.countAll());
     return HtmlUtils.htmlEscape(response);
   }
+
+  @PostMapping("/send-data")
+  public String sendData(@RequestBody String someData) {
+    var sanitized = HtmlUtils.htmlEscape(someData);
+    return "Added: %s".formatted(sanitized);
+  }
 }
