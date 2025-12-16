@@ -114,10 +114,10 @@
 ### Результаты проверок
 Успешный запуск SpotBugs: [spotbugs-logs](https://github.com/enzulode/infosec-lab1/actions/runs/20282029955/job/58246309174) \
 Ссылка на скачивание отчета: [отчет spotbugs](https://github.com/enzulode/infosec-lab1/actions/runs/20282029955/artifacts/4890790135) \
-<img src="./docs/spotbugs-log.png" alt="spotbugs-log" /> \
-<img src="./docs/spotbugs-report.png" alt="spotbugs-report" /> \
+<img src="./docs/spotbugs-log.png" alt="spotbugs-log" />
+<img src="./docs/spotbugs-report.png" alt="spotbugs-report" />
 
 Успешный запуск Snyk: [spotbugs-logs](https://github.com/enzulode/infosec-lab1/actions/runs/20282029955/job/58246469108) \
 Ссылка на скачивание отчета: [отчет snyk](https://github.com/enzulode/infosec-lab1/actions/runs/20282029955/artifacts/4890806548) \
-<img src="./docs/snyk-log.png" alt="snyk-log" /> \
-<img src="./docs/snyk-report.png" alt="snyk-report" /> \
+<img src="./docs/snyk-log.png" alt="snyk-log" />
+<img src="./docs/snyk-report.png" alt="snyk-report" />
