@@ -22,13 +22,19 @@ repositories {
 
 dependencies {
     // api related
-    implementation(libs.starterWebmvc)
+    implementation(libs.starterWeb)
     implementation(libs.starterSecurity)
+    implementation(libs.starterValidation)
+    implementation(libs.jacksonDatatype310)
 
     // persistence related
     implementation(libs.starterDataJpa)
-    implementation(libs.starterLiquibase)
     runtimeOnly(libs.postgresDriver)
+
+    // jwt stuff
+    implementation(libs.jjwtApi)
+    runtimeOnly(libs.jjwtImpl)
+    implementation(libs.jjwtJackson)
 
     // dev tools
     compileOnly(libs.lombok)
