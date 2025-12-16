@@ -1,0 +1,64 @@
+package com.enzulode.api.filter;
+
+import com.enzulode.common.service.IJwtService;
+import com.enzulode.common.service.IUserService;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+
+@Component
+@RequiredArgsConstructor
+public class JwtAuthFilter extends OncePerRequestFilter {
+  public static final String BEARER_PREFIX = "Bearer ";
+  private final IJwtService jwtService;
+  private final IUserService userService;
+
+  @Override
+  protected void doFilterInternal(
+      @NonNull HttpServletRequest request,
+      @NonNull HttpServletResponse response,
+      @NonNull FilterChain filterChain
+  ) throws ServletException, IOException {
+    var authHeader = request.getHeader(AUTHORIZATION);
+    if (authHeader == null || authHeader.isBlank() || !authHeader.startsWith(BEARER_PREFIX)) {
+      filterChain.doFilter(request, response);
+      return;
+    }
+
+    var jwt = authHeader.substring(BEARER_PREFIX.length());
+    var username = jwtService.extractUsername(jwt);
+
+    if (username != null && !username.isBlank() && SecurityContextHolder.getContext().getAuthentication() == null) {
+      UserDetails details = userService.userDetailsService()
+          .loadUserByUsername(username);
+
+      // token valid
+      if (jwtService.isTokenValid(jwt, details)) {
+        SecurityContext ctx = SecurityContextHolder.createEmptyContext();
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+            details,
+            null,
+            details.getAuthorities()
+        );
+        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        ctx.setAuthentication(authToken);
+        SecurityContextHolder.setContext(ctx);
+      }
+    }
+    filterChain.doFilter(request, response);
+  }
+}

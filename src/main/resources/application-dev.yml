@@ -9,8 +9,10 @@ spring:
     password: dev-password
 
   jpa:
+    open-in-view: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
 
-  liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.xml
+token:
+  signing:
+    key: YmVia2VrbG9sYmVia2VrbG9sYmVia2VrbG9sYmVia2VrbG9sYmVia2VrbG9sYmVia2VrbG9sYmVia2VrbG9sYmVia2VrbG9sYmVia2VrbG9sYmVia2VrbG9s

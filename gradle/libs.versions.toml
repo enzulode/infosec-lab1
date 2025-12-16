@@ -1,17 +1,22 @@
 [versions]
-springBoot = '4.0.0'
+springBoot = '3.5.8'
 springDependencyManagement = '1.1.7'
+jjwt = '0.12.3'
 
 [plugins]
 springBoot = { id = 'org.springframework.boot', version.ref = 'springBoot' }
 springDependencyManagement = { id = 'io.spring.dependency-management', version.ref = 'springDependencyManagement' }
 
 [libraries]
-starterWebmvc = { group = 'org.springframework.boot', name = 'spring-boot-starter-webmvc' }
+starterWeb = { group = 'org.springframework.boot', name = 'spring-boot-starter-web' }
 starterSecurity = { group = 'org.springframework.boot', name = 'spring-boot-starter-security' }
 starterDataJpa = { group = 'org.springframework.boot', name = 'spring-boot-starter-data-jpa' }
-starterLiquibase = { group = 'org.springframework.boot', name = 'spring-boot-starter-liquibase' }
+starterValidation = { group = 'org.springframework.boot', name = 'spring-boot-starter-validation' }
 postgresDriver = { group = 'org.postgresql', name = 'postgresql' }
 lombok = { group = 'org.projectlombok', name = 'lombok' }
+jjwtApi = { group = 'io.jsonwebtoken', name = 'jjwt-api', version.ref = 'jjwt' }
+jjwtImpl = { group = 'io.jsonwebtoken', name = 'jjwt-impl', version.ref = 'jjwt' }
+jjwtJackson = { group = 'io.jsonwebtoken', name = 'jjwt-jackson', version.ref = 'jjwt' }
+jacksonDatatype310 = { group = 'com.fasterxml.jackson.datatype', name = 'jackson-datatype-jsr310' }
 
 [bundles]
